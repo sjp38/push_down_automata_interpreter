@@ -1,0 +1,22 @@
+# This is the file for push down automata configuration.
+# Lines start with '#' is comment.
+# basically, the grammar is as simple as below:
+#  current state: input, pop > push: next state
+#  push can be list of atoms seperated by comma.
+#  ex> q1: a, b > c: q2
+#  ex> q1: a, Bottom > d,Bottom: q2
+#
+# Pre defined words:
+# None means nothing, Bottom means Bottom of stack,
+# q0 means start state, q-1 means end state.
+
+q0: a, Bottom > a,Bottom: q0
+q0: a, a > a,a: q0
+
+q0: b, Bottom > b,Bottom: q0
+q0: b, b > b,b: q0
+
+q0: a, b > None: q0
+q0: b, a > None: q0
+
+q0: None, a > None: q-1
